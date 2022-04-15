@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <!-- Chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <title>Final Project!</title>
+  </head>
+  <body>
+    <canvas id="pie" width="900" height="400">
+      <script>
+        var ctx = document.getElementById("pie");
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{labels | safe}},
+                datasets: [
+                {
+                    data:{{values | safe}}
+                }],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Pie Chart'
+                },
+        		responsive: true,
+        maintainAspectRatio: false,
+            }
+        });
+      </script>
+    </canvas>
+  </body>
+</html>

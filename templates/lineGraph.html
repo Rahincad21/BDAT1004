@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <!-- Chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <title>Final Project</title>
+  </head>
+  <body>
+    <canvas id="line" width="900" height="400">
+      <script>
+        var ctx = document.getElementById("line");
+        var data = {
+          labels: {{labels | safe}},
+          datasets: [
+            {
+              label: "Normal price",
+              data: {{normalPrice | safe}},
+              backgroundColor: "blue",
+              borderColor: "lightblue",
+              fill: false,
+              lineTension: 0,
+              radius: 5,
+            },
+            {
+              label: "Sales Price",
+              data: {{salePrice | safe}},
+              backgroundColor: "green",
+              borderColor: "lightgreen",
+              fill: false,
+              lineTension: 0,
+              radius: 5,
+            },
+          ],
+        };
+
+        //options
+        var options = {
+          responsive: true,
+          title: {
+            display: true,
+            position: "top",
+            text: "Line Graph",
+            fontSize: 18,
+            fontColor: "#111",
+          },
+          legend: {
+            display: true,
+            position: "bottom",
+            labels: {
+              fontColor: "#333",
+              fontSize: 16,
+            },
+          },
+        };
+        
+        var chart = new Chart(ctx, {
+          type: "line",
+          data: data,
+          options: options,
+        });
+      </script>
+    </canvas>
+  </body>
+</html>
