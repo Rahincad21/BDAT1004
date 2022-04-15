@@ -27,7 +27,6 @@ def get_all_data():
 def index():
     return render_template("index.html")
 
-
 @app.route('/barGraph')
 def barGraph():
     data = get_all_data()
