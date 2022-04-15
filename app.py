@@ -3,7 +3,7 @@ from flask import render_template
 import time
 from pymongo import MongoClient
 import pymongo
-
+import json
 
 app = Flask(__name__)
 
@@ -52,12 +52,12 @@ def barGraph():
 @app.route('/pieChart')
 def pieChart():
     data = get_all_data()
-    a = []
-    b= []
+    title = []
+    values = []
     for i in data:
-        a.append(i["title"])
-        b.append(i["salePrice"])
-    return render_template("pieChart.html",labels=a,values=b)
+        title.append(i["title"])
+        values.append(i["salePrice"])
+    return render_template("pieChart.html",labels=title,values=values)
     
 
 @app.route('/lineChart')
@@ -71,6 +71,16 @@ def lineChart():
         salePrice.append(i["salePrice"])
         normalPrice.append(i["normalPrice"])
     return render_template("lineGraph.html",labels=labels,salePrice=salePrice,normalPrice=normalPrice)
+
+# BONUS
+@app.route('/getAll', methods=['GET'])
+def get_item_by_id():
+    data = get_all_data()
+    response = []
+    for document in data:
+        document['_id'] = str(document['_id'])
+        response.append(document)
+    return json.dumps(response)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)

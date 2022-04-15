@@ -31,6 +31,9 @@
             <li class="nav-item">
               <a class="nav-link active" href="/lineChart">LineChart</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/getAll">GetAll</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -44,7 +47,8 @@
                 labels: {{labels | safe}},
                 datasets: [
                 {
-                    data:{{values | safe}}
+                    data:{{values | safe}},
+                    backgroundColor:["green","blue","red","purple","orange","yellow","pink","black",'rgb(255, 205, 86)']
                 }],
             },
             options: {
