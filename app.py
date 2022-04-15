@@ -44,8 +44,8 @@ def barGraph():
             Mixed += 1
         else:
             Other += 1
-    labels = ["Positive","Very Positive","Mixed","Others"]
-    values = [Positive,VPositive,Mixed,Other]
+    labels = ["Very Positive","Positive","Mixed","Others"]
+    values = [VPositive,Positive,Mixed,Other]
     return render_template("barGraph.html",labels=labels,values=values)
 
 
